@@ -174,30 +174,32 @@ func GenIngServiceDepEndsOnMap(clusterInfo map[string]string, cluster *spec.Dice
 	}
 	soldierPublicURL := fmt.Sprintf("%s://%s", protocol, soldierPublicAddr)
 
+	cp := "9680"
+
 	return map[string]map[string]string{
 		"gittar": {
 			"GITTAR_PUBLIC_ADDR": gittarPublicAddr,
 			"GITTAR_PUBLIC_URL":  gittarPublicURL,
 		},
 		"uc": {
-			"UC_PUBLIC_ADDR": ucPublicAddr,
-			"UC_PUBLIC_URL":  ucPublicURL,
+			"UC_PUBLIC_ADDR": fmt.Sprintf(ucPublicAddr+":%s", cp),
+			"UC_PUBLIC_URL":  fmt.Sprintf(ucPublicURL+":%s", cp),
 		},
 		"collector": {
 			"COLLECTOR_PUBLIC_ADDR": collectorPublicAddr,
 			"COLLECTOR_PUBLIC_URL":  collectorPublicURL,
 		},
 		"openapi": {
-			"OPENAPI_PUBLIC_ADDR": openapiPublicAddr,
-			"OPENAPI_PUBLIC_URL":  openapiPublicURL,
+			"OPENAPI_PUBLIC_ADDR": fmt.Sprintf(openapiPublicAddr+":%s", cp),
+			"OPENAPI_PUBLIC_URL":  fmt.Sprintf(openapiPublicURL+":%s", cp),
 		},
 		"cluster-dialer": {
 			"CLUSTER_DIALER_PUBLIC_ADDR": clusterDialerPublicAddr,
 			"CLUSTER_DIALER_PUBLIC_URL":  clusterDialerPublicURL,
 		},
 		"ui": {
-			"UI_PUBLIC_ADDR": uiPublicAddr,
-			"UI_PUBLIC_URL":  uiPublicURL,
+			"UI_PUBLIC_ADDR": fmt.Sprintf(uiPublicAddr+":%s", cp),
+			"UI_PUBLIC_URL":  fmt.Sprintf(uiPublicURL+":%s", cp),
 		},
 		"soldier": {
 			"SOLDIER_PUBLIC_ADDR": soldierPublicAddr,
