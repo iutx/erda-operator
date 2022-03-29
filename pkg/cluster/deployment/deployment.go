@@ -564,13 +564,6 @@ func Envs(dicesvcname string, dicesvc *diceyml.Service, clus *spec.DiceCluster) 
 		Value: fmt.Sprintf("%d", maxInt(dicesvc.Resources.Mem, dicesvc.Resources.MaxMem)),
 	})
 
-	if os.Getenv(EnableDatabaseTLS) == "true" {
-		r = append(r, corev1.EnvVar{
-			Name:  "MYSQL_CACERTPATH",
-			Value: fmt.Sprintf("/%s", DatabaseTlsSecretName),
-		})
-	}
-
 	return r
 }
 
